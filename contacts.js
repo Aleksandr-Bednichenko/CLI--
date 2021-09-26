@@ -16,7 +16,7 @@ function listContacts() {
     return readContacts()
   }
   
-  async function getContactById(contactId) {
+async function getContactById(contactId) {
     try {
       const contacts = await readContacts()
       const [result] = contacts.filter(({id}) => JSON.stringify(id) === contactId)
@@ -27,26 +27,26 @@ function listContacts() {
     }    
   }
   
-  async function removeContact(contactId) {    
-try {
-  const contacts = await readContacts()
-  const result = contacts.filter(({id}) => JSON.stringify(id) !== contactId)
+async function removeContact(contactId) {    
+    try {
+      const contacts = await readContacts()
+      const result = contacts.filter(({id}) => JSON.stringify(id) !== contactId)
 
-  if (contacts.length === result.length) {
-    return console.error(chalk.red(`Contact with ID ${contactId} not found!`));
-  }
+      if (contacts.length === result.length) {
+        return console.error(chalk.red(`Contact with ID ${contactId} not found!`));
+      }
 
-    await fs.writeFile(
-      contactsPath,
-      JSON.stringify(result, null, 2),
-    )
-    console.log(chalk.green("Contact deleted successfully! New list of contacts:"));
-    console.table(result)
-    
-  
-} catch (error) {
-  return console.error(error)
-}
+        await fs.writeFile(
+          contactsPath,
+          JSON.stringify(result, null, 2),
+        )
+        console.log(chalk.green("Contact deleted successfully! New list of contacts:"));
+        console.table(result)
+        
+      
+    } catch (error) {
+      return console.error(error)
+    }
     
   }
   
@@ -54,14 +54,14 @@ try {
     try {
       const contacts = await readContacts()
 
-    if (contacts.find((contact) => contact.name.toLowerCase() === name.toLowerCase()))
-      return console.warn(chalk.yellow("This name already exists!"));
+      if (contacts.find((contact) => contact.name.toLowerCase() === name.toLowerCase()))
+        return console.warn(chalk.yellow("This name already exists!"));
 
-    if (contacts.find((contact) => contact.email === email))
-      return console.warn(chalk.yellow("This email already exists!"));
+      if (contacts.find((contact) => contact.email === email))
+        return console.warn(chalk.yellow("This email already exists!"));
 
-    if (contacts.find((contact) => contact.phone === phone))
-      return console.warn(chalk.yellow("This phone already exists!"));
+      if (contacts.find((contact) => contact.phone === phone))
+        return console.warn(chalk.yellow("This phone already exists!"));
 
       const newContact = { id:crypto.randomUUID(), name, email, phone }
       contacts.push(newContact)
@@ -73,7 +73,8 @@ try {
        console.log(chalk.green('Add new contact!'))
        console.log(newContact)
      
-    } catch (error) {
+    } 
+    catch (error) {
       return console.error(error)
     }
    
