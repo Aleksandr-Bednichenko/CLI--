@@ -71,7 +71,7 @@ try {
       )
        console.log(chalk.green('Add new contact!'))
        console.log(newContact)
-      // return newContact
+     
     } catch (error) {
       return console.error(error)
     }

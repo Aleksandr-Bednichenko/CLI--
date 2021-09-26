@@ -42,7 +42,6 @@ function invokeAction({ action, id, name, email, phone }) {
 
     case 'remove':
       removeContact(id)
-      
       break
 
     default:
