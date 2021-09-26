@@ -40,7 +40,7 @@ function invokeAction({ action, id, name, email, phone }) {
       addContact(name, email, phone)
         .then((newContact) => {
           console.log(chalk.green('Add new contact!'))
-          console.table(newContact)
+          console.log(newContact)
         })
         .catch(console.error)
       break
