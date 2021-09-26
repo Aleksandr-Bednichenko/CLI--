@@ -1,0 +1,1 @@
+node index.js --action add --name Mango1 --email mango1@gmail.com --phone 050-322-22-22

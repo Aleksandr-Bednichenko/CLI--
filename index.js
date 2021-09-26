@@ -38,11 +38,6 @@ function invokeAction({ action, id, name, email, phone }) {
 
     case 'add':
       addContact(name, email, phone)
-        .then((newContact) => {
-          console.log(chalk.green('Add new contact!'))
-          console.log(newContact)
-        })
-        .catch(console.error)
       break
 
     case 'remove':
