@@ -19,7 +19,8 @@ function listContacts() {
   async function getContactById(contactId) {
     try {
       const contacts = await readContacts()
-      const [result] = contacts.filter((contact) => contact.id === contactId)
+      const [result] = contacts.filter(({id}) => JSON.stringify(id) === contactId)
+
       return result
     } catch (error) {
       return console.error(error)
@@ -29,7 +30,7 @@ function listContacts() {
   async function removeContact(contactId) {    
 try {
   const contacts = await readContacts()
-  const result = contacts.filter((contact) => contact.id !== contactId)
+  const result = contacts.filter(({id}) => JSON.stringify(id) !== contactId)
 
   if (contacts.length === result.length) {
     return console.error(chalk.red(`Contact with ID ${contactId} not found!`));
